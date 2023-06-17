@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ewallet_ui/widgets/menu_box.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -83,6 +84,83 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     onPressed: (){},
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 30),
+              alignment: Alignment.center,
+              child: Column(
+                children: const [
+                  Text(
+                    "Saldo",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      "Rp. 2.000.000.000",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  MenuWidget(icon: Icons.send_rounded, text: "Kirim"),
+                  MenuWidget(
+                      icon: Icons.account_balance_wallet, text: "Terima"),
+                  MenuWidget(icon: Icons.payment, text: "Bayar"),
+                  MenuWidget(icon: Icons.more_horiz, text: "Lainnya"),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 50),
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(45),
+                  )),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 30, horizontal: 25),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
+                            "Transaksi Terakhir",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF3D538F),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Text(
+                            'Lihat Semua',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                                fontSize: 14, color: Color(0xFF3D538F)),
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
