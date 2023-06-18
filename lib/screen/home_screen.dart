@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ewallet_ui/widgets/menu_box.dart';
+import 'package:flutter_ewallet_ui/widgets/transaction_detail.dart';
+import 'package:flutter_ewallet_ui/widgets/transaction_item.dart';
+
+import '../models/transaction.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -127,42 +131,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 50),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(45),
-                  )),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 25),
-                    child: Row(
-                      children: [
-                        const Expanded(
-                          child: Text(
-                            "Transaksi Terakhir",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color(0xFF3D538F),
-                                fontWeight: FontWeight.bold),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(top: 50),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(45),
+                    )),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 30, horizontal: 25),
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            child: Text(
+                              "Transaksi Terakhir",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xFF3D538F),
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            'Lihat Semua',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                                fontSize: 14, color: Color(0xFF3D538F)),
-                          ),
-                        )
-                      ],
+                          GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (BuildContext ctx) {
+                                    return const DetailTransactionScreen();
+                                  });
+                            },
+                            child: const Text(
+                              'Lihat Semua',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  fontSize: 14, color: Color(0xFF3D538F)),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                    Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return TransactionItem(
+                            transaction: transaction[index],
+                          );
+                        },
+                        itemCount: transaction.length,
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
