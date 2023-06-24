@@ -39,7 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     backgroundColor: Colors.blueGrey,
                     child: CircleAvatar(
                       radius: 20,
-                      backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=11'),
+                        backgroundImage: NetworkImage(
+                            'https://media.licdn.com/dms/image/D5603AQGER6ORHhIvsg/profile-displayphoto-shrink_200_200/0/1682392288186?e=1692835200&v=beta&t=ZgrIA82qN7FGzKEGWo6-KLSxfBAqwG9jSCFIKe5ylVw'),
                     ),
                   ),
                   ),
